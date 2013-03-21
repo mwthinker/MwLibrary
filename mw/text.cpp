@@ -50,7 +50,7 @@ namespace mw {
 
 	// Returns the width of the text to be drawn. (size in openGl
     double Text::getWidth() const {
-		if (font_) {
+		if (font_ && text_.size() > 0) {
 			double scale = characterSize_*1.0/font_->getCharacterSize();
 			return scale * texture_->getWidth();
 		}
@@ -59,7 +59,7 @@ namespace mw {
 
 	// Returns the height of the text to be drawn.
     double Text::getHeight() const {
-		if (font_) {
+		if (font_ && text_.size() > 0) {
 			double scale = characterSize_*1.0/font_->getCharacterSize();
 			return scale*texture_->getHeight();
 		}
