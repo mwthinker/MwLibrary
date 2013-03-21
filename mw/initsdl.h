@@ -3,13 +3,13 @@
 
 namespace mw {
 
-class InitSdl {
-public:
-InitSdl();
-virtual ~InitSdl();
-private:
-static int nbrOfInstances_;
-};
+	class InitSdl {
+	public:
+		InitSdl();
+		virtual ~InitSdl();
+	private:
+		static int nbrOfInstances_;
+	};
 
 } // namespace mw
 

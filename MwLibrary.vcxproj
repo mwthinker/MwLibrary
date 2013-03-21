@@ -78,9 +78,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="mw\font.h" />
     <ClInclude Include="mw\gamewindow.h" />
     <ClInclude Include="mw\initsdl.h" />
