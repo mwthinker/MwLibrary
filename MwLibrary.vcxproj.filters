@@ -19,6 +19,9 @@
     <Filter Include="Source Files\mw">
       <UniqueIdentifier>{99a079e8-067d-40c5-a2ff-5a5dd6394f17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\mw\signals">
+      <UniqueIdentifier>{68898398-3fb5-4176-9160-d96e8b3eca4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -67,6 +70,12 @@
       <Filter>Header Files\mw</Filter>
     </ClInclude>
     <ClInclude Include="mw\quadtree.h">
+      <Filter>Header Files\mw</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\signals\connection.h">
+      <Filter>Header Files\mw\signals</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\signal.h">
       <Filter>Header Files\mw</Filter>
     </ClInclude>
   </ItemGroup>

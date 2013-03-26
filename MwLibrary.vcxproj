@@ -86,6 +86,8 @@
     <ClInclude Include="mw\mathvector.h" />
     <ClInclude Include="mw\music.h" />
     <ClInclude Include="mw\quadtree.h" />
+    <ClInclude Include="mw\signal.h" />
+    <ClInclude Include="mw\signals\connection.h" />
     <ClInclude Include="mw\sound.h" />
     <ClInclude Include="mw\soundbuffer.h" />
     <ClInclude Include="mw\sprite.h" />
