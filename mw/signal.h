@@ -10,6 +10,7 @@
 
 namespace mw {
 
+	// Is a class that holds functions. A slot/callbacks class.
 	template <class A=void, class B=void>
 	class Signal : public signals::SignalInterface {
 	public:
@@ -27,12 +28,6 @@ namespace mw {
 		signals::Connection connect(std::function<void(A,B)> function) {
 			ConnectionInfoPtr c = std::make_shared<signals::ConnectionInfo>(++id, this);
 			functions_.push_back(TupleIdFunctionC(id,function,c));
-			/*	
-			if (void* ob = function.target<void*>()) {
-			//signals::Trackable* ob = dynamic_cast<signals::Trackable>(function.target());
-			return signals::Connection(c);
-			}
-			*/
 			return signals::Connection(c);
 		}
 
