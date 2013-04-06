@@ -50,6 +50,15 @@ namespace mw {
 		}
 
 	private:
+		Signal(const Signal& signal) {
+			// Not be used. Is not copyable.
+		}
+
+		Signal& operator=(const Signal& signal) {
+			// Not be used. Is not copyable.
+			return *this;
+		}
+
 		int id;
 		typedef std::shared_ptr<signals::ConnectionInfo> ConnectionInfoPtr;
 		typedef std::tuple<int, std::function<void(A,B)>, ConnectionInfoPtr> TupleIdFunctionC;
@@ -95,6 +104,15 @@ namespace mw {
 		}
 
 	private:
+		Signal(const Signal& signal) {
+			// Not be used. Is not copyable.
+		}
+
+		Signal& operator=(const Signal& signal) {
+			// Not be used. Is not copyable.
+			return *this;
+		}
+
 		int id;
 		typedef std::shared_ptr<signals::ConnectionInfo> ConnectionInfoPtr;
 		typedef std::tuple<int, std::function<void(A)>, ConnectionInfoPtr> TupleIdFunctionC;
@@ -140,6 +158,15 @@ namespace mw {
 		}
 
 	private:
+		Signal(const Signal& signal) {
+			// Not be used. Is not copyable.
+		}
+
+		Signal& operator=(const Signal& signal) {
+			// Not be used. Is not copyable.
+			return *this;
+		}
+
 		int id;
 		typedef std::shared_ptr<signals::ConnectionInfo> ConnectionInfoPtr;
 		typedef std::tuple<int, std::function<void()>, ConnectionInfoPtr> TupleIdFunctionC;
