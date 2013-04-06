@@ -28,10 +28,9 @@ namespace mw {
     }
 
     void Text::setText(std::string text) {
-		// Text changed => load new textImage.
+		// Text changed? => load new textImage.
         if (text_ != text) {
             loadText(text);
-            //std::cout << "\nText changed from '" << text_ << "' to '" << text<<"'";
             text_ = text;
         }
     }
