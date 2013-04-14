@@ -22,6 +22,15 @@ public:
         return characterSize_;
     }
 private:
+	Font(const Font& signal) {
+		// Not be used. Is not copyable.
+	}
+
+	Font& operator=(const Font& signal) {
+		// Not be used. Is not copyable.
+		return *this;
+	}
+
     TTF_Font* font_;
     unsigned int characterSize_;
 
