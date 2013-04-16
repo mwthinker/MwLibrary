@@ -11,31 +11,31 @@
 
 namespace mw {
 
-class Text : public InitTtf {
-public:
-	Text();
-    Text(std::string text, FontPtr font);
-	Text(std::string text, FontPtr font, unsigned int characterSize);
-    ~Text();
+	class Text : public InitTtf {
+	public:
+		Text();
+		Text(std::string text, FontPtr font);
+		Text(std::string text, FontPtr font, unsigned int characterSize);
+		~Text();
 
-    void setText(std::string text);
-    std::string getText() const;
-    void setCharacterSize(unsigned int size);
-    unsigned int getCharacterSize() const;
+		void setText(std::string text);
+		std::string getText() const;
+		void setCharacterSize(unsigned int size);
+		unsigned int getCharacterSize() const;
 
-    double getWidth() const;
-    double getHeight() const;
+		double getWidth() const;
+		double getHeight() const;
 
-    void draw();
-private:
-    void loadText(std::string str);
-    Sprite sprite_;
+		void draw();
+	private:
+		void loadText(std::string str);
+		Sprite sprite_;
 
-	TexturePtr texture_;
-    std::string text_;
-    unsigned int characterSize_;
-    FontPtr font_;
-};
+		TexturePtr texture_;
+		std::string text_;
+		unsigned int characterSize_;
+		FontPtr font_;
+	};
 
 } // Namespace mw
 

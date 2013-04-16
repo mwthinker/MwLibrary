@@ -8,31 +8,31 @@
 
 namespace mw {
 
-class Sound {
-public:
-    Sound();
-	Sound(std::string filename);
-    Sound(SoundBufferPtr soundBuffer);
-    
-	Sound(const Sound& sound);
-    Sound& operator=(const Sound& sound);
+	class Sound {
+	public:
+		Sound();
+		Sound(std::string filename);
+		Sound(SoundBufferPtr soundBuffer);
 
-    void play(int loops = 0);
-    void pause();
-    bool isPaused() const;
+		Sound(const Sound& sound);
+		Sound& operator=(const Sound& sound);
 
-    /*
-    void setVolume(bool loop);    
-	bool getVolume() const;
-    }*/
+		void play(int loops = 0);
+		void pause();
+		bool isPaused() const;
 
-private:
-    int channel_;
-    int id_;    
-    SoundBufferPtr soundBuffer_;
+		/*
+		void setVolume(bool loop);    
+		bool getVolume() const;
+		}*/
 
-	static int lastId_;
-};
+	private:
+		int channel_;
+		int id_;    
+		SoundBufferPtr soundBuffer_;
+
+		static int lastId_;
+	};
 
 } // namespace mw
 

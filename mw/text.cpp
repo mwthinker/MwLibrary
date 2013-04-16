@@ -8,7 +8,8 @@
 
 #include <memory>
 
-namespace mw {	
+namespace mw {
+
 	Text::Text() {
 	}
 
@@ -77,7 +78,7 @@ namespace mw {
 			}
 		}
     }
-// private
+
     void Text::loadText(std::string str) {
 		if (font_) {
 			if (str.size() > 0) {
@@ -90,4 +91,4 @@ namespace mw {
 		}
     }
 
-} // Namespace mw
+} // Namespace mw.

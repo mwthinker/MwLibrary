@@ -11,19 +11,28 @@
 
 namespace mw {
 
-class SoundBuffer : public InitSdl {
-public:
-    SoundBuffer(std::string filename);
-    ~SoundBuffer();
-private:
-    Mix_Chunk* mixChunk_;
+	class SoundBuffer : public InitSdl {
+	public:
+		SoundBuffer(std::string filename);
+		~SoundBuffer();
+	private:
+		SoundBuffer(const SoundBuffer&) {
+			// Not to be used. Is not copyable.
+		}
 
-    static int nbrOfInstances_;
-    friend class Sound;
-    static std::map<int,int> channelList_;// <channel, sound id>
-};
+		SoundBuffer& operator=(const SoundBuffer&) {
+			// Not to be used. Is not copyable.
+			return *this;
+		}
 
-typedef std::shared_ptr<SoundBuffer> SoundBufferPtr;
+		Mix_Chunk* mixChunk_;
+
+		static int nbrOfInstances_;
+		friend class Sound;
+		static std::map<int,int> channelList_;// <channel, sound id>
+	};
+
+	typedef std::shared_ptr<SoundBuffer> SoundBufferPtr;
 
 } // namespace mw
 

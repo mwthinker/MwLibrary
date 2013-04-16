@@ -7,32 +7,32 @@
 
 namespace mw {
 
-class Music {
-public:
-    Music() {
-    }
+	class Music {
+	public:
+		Music() {
+		}
 
-    void play() {
-    }
+		void play() {
+		}
 
-    void setLoop(bool loop) {
-        loop_ = loop;
-    }
+		void setLoop(bool loop) {
+			loop_ = loop;
+		}
 
-    bool isLoop() const {
-        return loop_;
-    }
+		bool isLoop() const {
+			return loop_;
+		}
 
-    void setVolume(bool loop) {
-        loop_ = loop;
-    }
+		void setVolume(bool loop) {
+			loop_ = loop;
+		}
 
-    bool getVolume() const {
-        return loop_;
-    }
-private:
-    bool loop_;
-};
+		bool getVolume() const {
+			return loop_;
+		}
+	private:
+		bool loop_;
+	};
 
 } // namespace mw
 

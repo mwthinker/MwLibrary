@@ -29,8 +29,17 @@ namespace mw {
 		// Returns the height of the image in pixels. 
 		int getHeight() const;
 	private:
-		friend class Text;
+		Texture(const Texture&) {
+			// Not to be used. Is not copyable.
+		}
 
+		Texture& operator=(const Texture&) {
+			// Not to be used. Is not copyable.
+			return *this;
+		}
+		
+		friend class Text;
+		
 		// class Texture takes over ownership of surface and is responsable of deallocation.
 		// Not safe to use surface outside this class after calling the constuctor.
 		Texture(SDL_Surface* surface);

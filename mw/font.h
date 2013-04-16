@@ -10,34 +10,34 @@
 
 namespace mw {
 
-class Font : public InitTtf {
-public:
+	class Font : public InitTtf {
+	public:
 
-	// Loads a font located in file named (filename). The font is created to be in
-	// size (characterSize) default 30 size. Higher size demands higher memory usage.
-    Font(std::string filename, unsigned int characterSize = 30);
-	~Font();	
+		// Loads a font located in file named (filename). The font is created to be in
+		// size (characterSize) default 30 size. Higher size demands higher memory usage.
+		Font(std::string filename, unsigned int characterSize = 30);
+		~Font();	
 
-    inline unsigned int getCharacterSize() const {
-        return characterSize_;
-    }
-private:
-	Font(const Font& signal) {
-		// Not be used. Is not copyable.
-	}
+		inline unsigned int getCharacterSize() const {
+			return characterSize_;
+		}
+	private:
+		Font(const Font&) {
+			// Not to be used. Is not copyable.
+		}
 
-	Font& operator=(const Font& signal) {
-		// Not be used. Is not copyable.
-		return *this;
-	}
+		Font& operator=(const Font&) {
+			// Not to be used. Is not copyable.
+			return *this;
+		}
 
-    TTF_Font* font_;
-    unsigned int characterSize_;
+		TTF_Font* font_;
+		unsigned int characterSize_;
 
-    friend class Text;
-};
+		friend class Text;
+	};
 
-typedef std::shared_ptr<Font> FontPtr;
+	typedef std::shared_ptr<Font> FontPtr;
 
 } // namespace mw
 
