@@ -16,6 +16,9 @@ namespace mw {
 		// code are of use in the constructor (safe to call constructor in other threads).
 		Texture(std::string filename);
 
+		// Loads a image from data.
+		Texture(int width, int height, int pixelSize, void* data);
+
 		// Cleens the image from memory and the opengl texture from graphic memory.
 		~Texture();
 
@@ -49,7 +52,6 @@ namespace mw {
 		void loadToVideo();
 
 		GLuint texture_;
-		int width_, height_;
 
 		SDL_Surface* preLoadSurface_;
 		int loadedToVideoId_;

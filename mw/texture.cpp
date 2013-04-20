@@ -9,6 +9,7 @@
 namespace mw {
 
 	namespace {
+
 		// Quick utility function for texture creation.
 		int powerOfTwo(int input) {
 			int value = 1;
@@ -46,13 +47,31 @@ namespace mw {
 		preLoadSurface_ = IMG_Load(filename.c_str());
 		if (preLoadSurface_ == 0) {
 			std::cout << "\nImage " << filename << " failed to load: " << IMG_GetError();			
-		} else {
-			width_ = preLoadSurface_->w;
-			height_ = preLoadSurface_->h;
 		}
 
-		// Is called when the opengl kontext need to be loaded.
+		// Is called when the opengl context need to be loaded.
 		// I.e.
+		loadedToVideoId_ = mw::Window::getVideoId()-1; // loadedToVideoId_ != mw::Window::getVideoId() means that the opengl texture is not loaded yet.
+	}
+
+	Texture::Texture(int width, int height, int pixelSize, void* data) {
+		preLoadSurface_ = SDL_CreateRGBSurfaceFrom(data,
+			width, height,
+			pixelSize * 8,
+			pixelSize,
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+			0xff000000,
+			0x00ff0000,
+			0x0000ff00,
+			0x000000ff,
+#else
+			0x000000ff,
+			0x0000ff00,
+			0x00ff0000,
+			0xff000000
+#endif
+			);
+		
 		loadedToVideoId_ = mw::Window::getVideoId()-1; // loadedToVideoId_ != mw::Window::getVideoId() means that the opengl texture is not loaded yet.
 	}
 
@@ -75,19 +94,16 @@ namespace mw {
 	}
 
 	int Texture::getWidth() const {
-		return width_;
+		return preLoadSurface_->w;
 	}
 
 	int Texture::getHeight() const {
-		return height_;
+		return preLoadSurface_->h;
 	}
 
 	// class Texture takes over ownership of surface and is responsable of deallocation.
 	// Not safe to use surface outside this class after calling the constuctor.
 	Texture::Texture(SDL_Surface* surface) : preLoadSurface_(surface) {
-		width_ = preLoadSurface_->w;
-		height_ = preLoadSurface_->h;
-
 		// To tell that a opengl texture should be created.
 		loadedToVideoId_ = mw::Window::getVideoId()-1;
 	}
@@ -98,5 +114,4 @@ namespace mw {
 		loadedToVideoId_ = mw::Window::getVideoId();
 	}
 
-
-} // namespace mw
+} // namespace mw.
