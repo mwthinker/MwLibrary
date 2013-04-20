@@ -75,6 +75,10 @@ namespace mw {
 		loadedToVideoId_ = mw::Window::getVideoId()-1; // loadedToVideoId_ != mw::Window::getVideoId() means that the opengl texture is not loaded yet.
 	}
 
+	bool Texture::saveToFile(std::string filename) const {
+		return SDL_SaveBMP(preLoadSurface_,"surface.bmp") == 0;
+	}
+
 	Texture::~Texture() {
 		if (loadedToVideoId_ == mw::Window::getVideoId()) {
 			// Is called if the opengl texture is valid and therefore need to be cleaned up.

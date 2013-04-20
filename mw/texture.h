@@ -31,6 +31,10 @@ namespace mw {
 
 		// Returns the height of the image in pixels. 
 		int getHeight() const;
+
+		// Saves the texture as a bmp. Returns true if successful else false.
+		// E.g. filename="image" => creates a bmp image named "image".
+		bool saveToFile(std::string filename) const;
 	private:
 		Texture(const Texture&) {
 			// Not to be used. Is not copyable.
