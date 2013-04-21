@@ -76,7 +76,7 @@ namespace mw {
 	}
 
 	bool Texture::saveToFile(std::string filename) const {
-		return SDL_SaveBMP(preLoadSurface_,"surface.bmp") == 0;
+		return SDL_SaveBMP(preLoadSurface_, filename.c_str()) == 0;
 	}
 
 	Texture::~Texture() {
