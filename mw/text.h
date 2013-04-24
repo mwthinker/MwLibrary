@@ -31,7 +31,6 @@ namespace mw {
 		void loadText(std::string str);
 		Sprite sprite_;
 
-		TexturePtr texture_;
 		std::string text_;
 		unsigned int characterSize_;
 		FontPtr font_;

@@ -52,7 +52,8 @@ namespace mw {
     double Text::getWidth() const {
 		if (font_ && text_.size() > 0) {
 			double scale = characterSize_*1.0/font_->getCharacterSize();
-			return scale * texture_->getWidth();
+			TexturePtr texture = sprite_.getTexture();
+			return scale * texture->getWidth();
 		}
 		return 0.0;
     }
@@ -60,8 +61,9 @@ namespace mw {
 	// Returns the height of the text to be drawn.
     double Text::getHeight() const {
 		if (font_ && text_.size() > 0) {
+			TexturePtr texture = sprite_.getTexture();
 			double scale = characterSize_*1.0/font_->getCharacterSize();
-			return scale*texture_->getHeight();
+			return scale*texture->getHeight();
 		}
 		return 0.0;
     }
@@ -71,7 +73,8 @@ namespace mw {
 			if (text_.size() > 0) {
 				glPushMatrix();
 				double scale = characterSize_*1.0/font_->getCharacterSize();
-				glScaled(scale * texture_->getWidth(),scale * texture_->getHeight(),1.0);
+				TexturePtr texture = sprite_.getTexture();
+				glScaled(scale * texture->getWidth(),scale * texture->getHeight(),1.0);
 				glTranslated(0.5,0.5,0.0);
 				sprite_.draw();
 				glPopMatrix();
@@ -85,8 +88,8 @@ namespace mw {
 				SDL_Color color = {255,255,255};
 				SDL_Surface* surface = TTF_RenderText_Blended(font_->font_, str.c_str(), color);
 				// texture_ takes ownership of surface
-				texture_ = TexturePtr(new Texture(surface));
-				sprite_.setTexture(texture_);
+				TexturePtr texture = TexturePtr(new Texture(surface));
+				sprite_.setTexture(texture);
 			}
 		}
     }
