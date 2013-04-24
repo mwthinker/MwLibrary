@@ -16,7 +16,7 @@ namespace mw {
 		// Loads a font located in file named (filename). The font is created to be in
 		// size (characterSize) default 30 size. Higher size demands higher memory usage.
 		Font(std::string filename, unsigned int characterSize = 30);
-		~Font();	
+		~Font();
 
 		inline unsigned int getCharacterSize() const {
 			return characterSize_;
