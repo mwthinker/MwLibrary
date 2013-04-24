@@ -29,12 +29,13 @@ namespace mw {
 			glBindTexture(GL_TEXTURE_2D, textureId);
 
 			int mode = GL_RGB;
-
+			SDL_LockSurface(surface);
 			if (surface->format->BytesPerPixel == 4) {
 				mode = GL_RGBA;
 			}
 
 			glTexImage2D(GL_TEXTURE_2D, 0, mode, surface->w, surface->h, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
+			SDL_UnlockSurface(surface);
 
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
