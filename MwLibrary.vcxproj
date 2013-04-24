@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="mw\color.h" />
     <ClInclude Include="mw\font.h" />
     <ClInclude Include="mw\gamewindow.h" />
     <ClInclude Include="mw\initsdl.h" />

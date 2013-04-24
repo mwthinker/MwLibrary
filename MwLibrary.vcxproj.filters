@@ -78,6 +78,9 @@
     <ClInclude Include="mw\signal.h">
       <Filter>Header Files\mw</Filter>
     </ClInclude>
+    <ClInclude Include="mw\color.h">
+      <Filter>Header Files\mw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
