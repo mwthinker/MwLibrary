@@ -6,11 +6,13 @@ namespace mw {
 	class InitTtf {
 	public:
 		InitTtf();
+		InitTtf(const InitTtf&);
+		InitTtf& operator=(const InitTtf&);
 		virtual ~InitTtf();
 	private:
 		static int nbrOfInstances_;
 	};
 
-} // namespace mw
+} // Namespace mw.
 
 #endif // MW_INITTTF_H

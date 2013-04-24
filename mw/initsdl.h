@@ -7,6 +7,8 @@ namespace mw {
 	public:
 		InitSdl();
 		virtual ~InitSdl();
+		InitSdl(const InitSdl&);
+		InitSdl& operator=(const InitSdl&);
 	private:
 		static int nbrOfInstances_;
 	};
