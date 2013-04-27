@@ -14,6 +14,8 @@ namespace mw {
 	template <class A=void, class B=void>
 	class Signal : public signals::SignalInterface {
 	public:
+		typedef std::function<void(A,B)> Callback;
+
 		Signal() {
 			id = 0;
 		}
@@ -68,6 +70,8 @@ namespace mw {
 	template <class A>
 	class Signal<A, void> : public signals::SignalInterface {
 	public:
+		typedef std::function<void(A)> Callback;
+
 		Signal() {
 			id = 0;
 		}
@@ -122,6 +126,8 @@ namespace mw {
 	template <>
 	class Signal<void, void> : public signals::SignalInterface {
 	public:
+		typedef std::function<void()> Callback;
+
 		Signal() {
 			id = 0;
 		}
