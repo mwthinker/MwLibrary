@@ -27,9 +27,9 @@ namespace mw {
 			}
 		}
 
-		signals::Connection connect(std::function<void(A,B)> function) {
+		signals::Connection connect(Callback callback) {
 			ConnectionInfoPtr c = std::make_shared<signals::ConnectionInfo>(++id, this);
-			functions_.push_back(TupleIdFunctionC(id,function,c));
+			functions_.push_back(TupleIdFunctionC(id,callback,c));
 			return signals::Connection(c);
 		}
 
@@ -63,7 +63,7 @@ namespace mw {
 
 		int id;
 		typedef std::shared_ptr<signals::ConnectionInfo> ConnectionInfoPtr;
-		typedef std::tuple<int, std::function<void(A,B)>, ConnectionInfoPtr> TupleIdFunctionC;
+		typedef std::tuple<int, Callback, ConnectionInfoPtr> TupleIdFunctionC;
 		std::list<TupleIdFunctionC> functions_;
 	};
 
@@ -83,9 +83,9 @@ namespace mw {
 			}
 		}
 
-		signals::Connection connect(std::function<void(A)> function) {
+		signals::Connection connect(Callback callback) {
 			ConnectionInfoPtr c = std::make_shared<signals::ConnectionInfo>(++id, this);
-			functions_.push_back(TupleIdFunctionC(id,function,c));
+			functions_.push_back(TupleIdFunctionC(id,callback,c));
 			return signals::Connection(c);
 		}
 
@@ -119,7 +119,7 @@ namespace mw {
 
 		int id;
 		typedef std::shared_ptr<signals::ConnectionInfo> ConnectionInfoPtr;
-		typedef std::tuple<int, std::function<void(A)>, ConnectionInfoPtr> TupleIdFunctionC;
+		typedef std::tuple<int, Callback, ConnectionInfoPtr> TupleIdFunctionC;
 		std::list<TupleIdFunctionC> functions_;
 	};
 
@@ -139,9 +139,9 @@ namespace mw {
 			}
 		}
 
-		signals::Connection connect(std::function<void()> function) {
+		signals::Connection connect(Callback callback) {
 			ConnectionInfoPtr c = std::make_shared<signals::ConnectionInfo>(++id, this);
-			functions_.push_back(TupleIdFunctionC(id,function,c));
+			functions_.push_back(TupleIdFunctionC(id,callback,c));
 			return signals::Connection(c);
 		}
 
@@ -175,7 +175,7 @@ namespace mw {
 
 		int id;
 		typedef std::shared_ptr<signals::ConnectionInfo> ConnectionInfoPtr;
-		typedef std::tuple<int, std::function<void()>, ConnectionInfoPtr> TupleIdFunctionC;
+		typedef std::tuple<int, Callback, ConnectionInfoPtr> TupleIdFunctionC;
 		std::list<TupleIdFunctionC> functions_;
 	};
 
