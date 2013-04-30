@@ -37,7 +37,7 @@ namespace mw {
 
 	class Window : public InitSdl {
 	public:
-		// Creates a window with size determened by width and height in pixels. The windows name is defined by title. And
+		// Creates a window with size determined by width and height in pixels. The windows name is defined by title. And
 		// icon image is defined by filepath icon. Only one instance should be actived at each time due to SDL limitations.
 		Window(int width, int height, std::string title = "Window", std::string icon = "");
 

@@ -70,7 +70,7 @@ void Window::setWindowsSize(int width, int height) {
 		height_ = height;
 		screenResolution_ = ScreenResolution(width,height);
 		resize(width_,height_);
-		std::cout << "\nsetWindowsSize " << width_ << " " << height_;
+		std::cout << "\nSetWindowsSize " << width_ << " " << height_;
 	}
 }
 
@@ -115,13 +115,13 @@ std::vector<ScreenResolution> Window::getValidScreenResolutions() {
 	SDL_Rect** modes;
 	modes = SDL_ListModes(NULL, SDL_FULLSCREEN|videoflags_);
 
+	std::vector<ScreenResolution> resolutions_;
+
 	// Check if there are any modes available
 	if (modes == (SDL_Rect**)0) {
 		printf("No modes available!\n");
-		exit(-1);
-	}
-
-	std::vector<ScreenResolution> resolutions_;
+		return resolutions_;
+	}	
 
 	// Check if our resolution is restricted
 	if (modes == (SDL_Rect**)-1 ) {
@@ -139,53 +139,46 @@ std::vector<ScreenResolution> Window::getValidScreenResolutions() {
 }
 
 ScreenResolution Window::getFullScreenResolution() const {
-	return ScreenResolution(200,200);
+	return fullScreenResolution_;
 }
 
 void Window::setFullScreenResolution(ScreenResolution resolution) {
 	fullScreenResolution_ = resolution;
-	//SDL_SetVideoMode(resolution.getWidth(), resolution.getHeight(), 32, videoflags_);
 }
 
 void Window::setFullScreen(bool fullScreen) {
-	bool changeToFullScreen = fullScreen && !(SDL_FULLSCREEN & videoflags_) && SDL_RESIZABLE;
-	bool changeToWindows = !fullScreen && (SDL_FULLSCREEN & videoflags_) && SDL_RESIZABLE;
-
-	if (changeToFullScreen) {
-        videoflags_ ^= SDL_FULLSCREEN;
-        width_ = fullScreenResolution_.getWidth();
-		height_ = fullScreenResolution_.getHeight();
-		SDL_SetVideoMode(fullScreenResolution_.getWidth(), fullScreenResolution_.getHeight(), 32, videoflags_);
-        ++videoId_;
-        fullScreen_ = true;
-	} else if (changeToWindows) {
-        videoflags_ ^= SDL_FULLSCREEN;
-        width_ = 200;//screenResolution_.getWidth();
-		height_ = 200;//screenResolution_.getHeight();
-		SDL_SetVideoMode(width_, height_, 32, videoflags_);
-        ++videoId_;
-        fullScreen_ = false;
-	}
-    /*
-    fullScreen_ = fullScreen;
-	if (fullScreen) {
-		width_ = fullScreenResolution_.getWidth();
-		height_ = fullScreenResolution_.getHeight();
+	if (fullScreen_ != fullScreen) {
+		if (fullScreen) {
+			videoflags_ = SDL_OPENGL | SDL_FULLSCREEN;
+			width_ = fullScreenResolution_.getWidth();
+			height_ = fullScreenResolution_.getHeight();
+			SDL_Surface* surface = SDL_SetVideoMode(fullScreenResolution_.getWidth(), fullScreenResolution_.getHeight(), 32, videoflags_);
+			if (surface = 0) {
+				// Reset to old the window settings.
+				fullScreen = false;
+			}
+			++videoId_;
+			fullScreen_ = true;
+		} 
+		
+		if (!fullScreen) {
+			if (isResizable_) {
+				videoflags_ = SDL_OPENGL | SDL_RESIZABLE;
+			} else {
+				videoflags_ = SDL_OPENGL;
+			}
+			width_ = screenResolution_.getWidth();
+			height_ = screenResolution_.getHeight();
+			SDL_SetVideoMode(width_, height_, 32, videoflags_);
+			++videoId_;
+			fullScreen_ = false;
+		}
+		
 		resize(width_,height_);
-		videoflags_ ^= SDL_FULLSCREEN;
-		SDL_SetVideoMode(fullScreenResolution_.getWidth(), fullScreenResolution_.getHeight(), 32, SDL_FULLSCREEN | videoflags_);
-	} else {
-		//setWindowsSize(screenResolution_.getWidth(),screenResolution_.getHeight());
-		setWindowsSize(400,400);
-		std::cout << "\nfullScreen==FALSE";
-
 	}
-	++videoId_;
-	*/
 }
 
 bool Window::isFullScreen() const {
-    //return SDL_FULLSCREEN & videoflags_;
 	return fullScreen_;
 }
 
