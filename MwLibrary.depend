@@ -1,0 +1,332 @@
+# depslib dependency file v1.0
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/font.cpp
+	"font.h"
+	<string>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/font.h
+	"initttf.h"
+	<SDL_ttf.h>
+	<string>
+	<iostream>
+	<memory>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/initttf.h
+
+1335800845 /usr/include/SDL/SDL_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_config.h
+	"SDL_platform.h"
+	<stdarg.h>
+
+1343821716 /usr/include/SDL/SDL_platform.h
+
+1343821716 /usr/include/SDL/begin_code.h
+
+1343821716 /usr/include/SDL/close_code.h
+
+1343821716 /usr/include/SDL/SDL_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_keysym.h
+
+1343821716 /usr/include/SDL/SDL_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1343821716 /usr/include/SDL/SDL_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/gamewindow.cpp
+	"gamewindow.h"
+	<string>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/gamewindow.h
+	"window.h"
+	<string>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/window.h
+	"initsdl.h"
+	"joystick.h"
+	<string>
+	<SDL_opengl.h>
+	<SDL_image.h>
+	<vector>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/initsdl.h
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/joystick.h
+	<SDL.h>
+	<memory>
+	<string>
+	<vector>
+
+1343821716 /usr/include/SDL/SDL_opengl.h
+	"SDL_config.h"
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<gl.h>
+	<glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<windows.h>
+	<stddef.h>
+
+1365188180 /usr/include/SDL/SDL_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/initsdl.cpp
+	"initsdl.h"
+	<SDL.h>
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/initttf.cpp
+	"initttf.h"
+	<SDL_ttf.h>
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/joystick.cpp
+	"joystick.h"
+	<SDL.h>
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/mathvector.cpp
+	"mathvector.h"
+	<iostream>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/mathvector.h
+	<cmath>
+	<iostream>
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/sound.cpp
+	"sound.h"
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/sound.h
+	"soundbuffer.h"
+	<string>
+	<map>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/soundbuffer.h
+	"initsdl.h"
+	<SDL_mixer.h>
+	<iostream>
+	<string>
+	<map>
+	<memory>
+
+1348478958 /usr/include/SDL/SDL_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1343821716 /usr/include/SDL/SDL_types.h
+	"SDL_stdinc.h"
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/soundbuffer.cpp
+	"soundbuffer.h"
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/sprite.cpp
+	"sprite.h"
+	<string>
+	<SDL.h>
+	<SDL_opengl.h>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/sprite.h
+	"texture.h"
+	<string>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/texture.h
+	<string>
+	<SDL_opengl.h>
+	<SDL_image.h>
+	<memory>
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/text.cpp
+	"text.h"
+	"initttf.h"
+	"font.h"
+	<SDL_ttf.h>
+	<string>
+	<memory>
+
+1367624987 /home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/text.h
+	"initttf.h"
+	"font.h"
+	"sprite.h"
+	"texture.h"
+	<SDL_ttf.h>
+	<string>
+
+1367624987 source:/home/marcus/Dokument/Programmering/Codeblocks/MwLibrary/mw/texture.cpp
+	"texture.h"
+	"window.h"
+	<SDL_image.h>
+	<SDL_opengl.h>
+	<iostream>
+
