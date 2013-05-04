@@ -24,7 +24,7 @@ Window::Window(int width, int height, std::string title, std::string icon) {
     height_ = height;
 
     setWindowsTitle(title);
-	unicode_ = false;    
+	unicode_ = false;
 	fullScreen_ = false;
 
 	screenResolution_ = ScreenResolution(width,height);
@@ -34,17 +34,17 @@ Window::Window(int width, int height, std::string title, std::string icon) {
 void Window::startLoop() {
 	while (!quit_) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-				
-		SDL_Event eventSDL;		
+
+		SDL_Event eventSDL;
 		while (SDL_PollEvent(&eventSDL)) {
 			if (eventSDL.type == SDL_VIDEORESIZE) {
 				setWindowsSize(eventSDL.resize.w,eventSDL.resize.h);
-				
+
 				std::cout << "\nSDL_VIDEORESIZE " << width_ << " " << height_;
 			} else {
 				eventUpdate(eventSDL);
 			}
-		}		
+		}
 
 		Uint32 currentTime = SDL_GetTicks();
 		Uint32 deltaTime = currentTime - time_;
@@ -121,7 +121,7 @@ std::vector<ScreenResolution> Window::getValidScreenResolutions() {
 	if (modes == (SDL_Rect**)0) {
 		printf("No modes available!\n");
 		return resolutions_;
-	}	
+	}
 
 	// Check if our resolution is restricted
 	if (modes == (SDL_Rect**)-1 ) {
@@ -153,14 +153,14 @@ void Window::setFullScreen(bool fullScreen) {
 			width_ = fullScreenResolution_.getWidth();
 			height_ = fullScreenResolution_.getHeight();
 			SDL_Surface* surface = SDL_SetVideoMode(fullScreenResolution_.getWidth(), fullScreenResolution_.getHeight(), 32, videoflags_);
-			if (surface = 0) {
+			if (surface == 0) {
 				// Reset to old the window settings.
 				fullScreen = false;
 			}
 			++videoId_;
 			fullScreen_ = true;
-		} 
-		
+		}
+
 		if (!fullScreen) {
 			if (isResizable_) {
 				videoflags_ = SDL_OPENGL | SDL_RESIZABLE;
@@ -173,7 +173,7 @@ void Window::setFullScreen(bool fullScreen) {
 			++videoId_;
 			fullScreen_ = false;
 		}
-		
+
 		resize(width_,height_);
 	}
 }
@@ -207,7 +207,7 @@ bool Window::isQuiting() const {
 }
 
 // Private
-void Window::update(Uint32 deltaTime) {	
+void Window::update(Uint32 deltaTime) {
 }
 
 void Window::eventUpdate(const SDL_Event& windowEvent) {
