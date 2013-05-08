@@ -119,4 +119,4 @@ namespace mw {
 		loadedToVideoId_ = mw::Window::getVideoId();
 	}
 
-} // namespace mw.
+} // Namespace mw.

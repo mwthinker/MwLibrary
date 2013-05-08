@@ -132,6 +132,6 @@ namespace mw {
 		static int videoId_;
 	};
 
-} // Namespace mw
+} // Namespace mw.
 
 #endif // MW_WINDOW_H
