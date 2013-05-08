@@ -40,12 +40,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>c:\Programmering\SDK\SDL\SDL all\include;C:\Programmering\SDK\enet-1.3.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\Programmering\SDK\SDL\SDL all\lib;C:\Programmering\SDK\enet-1.3.5\lib\debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>c:\Programmering\SDK\SDL\SDL all\include;C:\Programmering\SDK\enet\include;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Programmering\SDK\SDL\SDL all\lib;C:\Programmering\SDK\enet\lib\debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>c:\Programmering\SDK\SDL\SDL all\include;C:\Programmering\SDK\enet-1.3.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\Programmering\SDK\SDL\SDL all\lib;C:\Programmering\SDK\enet-1.3.5\lib\debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>c:\Programmering\SDK\SDL\SDL all\include;C:\Programmering\SDK\enet\include;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Programmering\SDK\SDL\SDL all\lib;C:\Programmering\SDK\enet\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -79,13 +79,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="mw\color.h" />
+    <ClInclude Include="mw\network.h" />
+    <ClInclude Include="mw\enet\client.h" />
+    <ClInclude Include="mw\enet\enetnetwork.h" />
+    <ClInclude Include="mw\enet\server.h" />
     <ClInclude Include="mw\font.h" />
     <ClInclude Include="mw\gamewindow.h" />
     <ClInclude Include="mw\initsdl.h" />
     <ClInclude Include="mw\initttf.h" />
     <ClInclude Include="mw\joystick.h" />
+    <ClInclude Include="mw\localnetwork.h" />
     <ClInclude Include="mw\mathvector.h" />
     <ClInclude Include="mw\music.h" />
+    <ClInclude Include="mw\packet.h" />
     <ClInclude Include="mw\quadtree.h" />
     <ClInclude Include="mw\signal.h" />
     <ClInclude Include="mw\signals\connection.h" />
@@ -99,11 +105,15 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="mw\enet\client.cpp" />
+    <ClCompile Include="mw\enet\enetnetwork.cpp" />
+    <ClCompile Include="mw\enet\server.cpp" />
     <ClCompile Include="mw\font.cpp" />
     <ClCompile Include="mw\gamewindow.cpp" />
     <ClCompile Include="mw\initsdl.cpp" />
     <ClCompile Include="mw\initttf.cpp" />
     <ClCompile Include="mw\joystick.cpp" />
+    <ClCompile Include="mw\localnetwork.cpp" />
     <ClCompile Include="mw\mathvector.cpp" />
     <ClCompile Include="mw\sound.cpp" />
     <ClCompile Include="mw\soundbuffer.cpp" />

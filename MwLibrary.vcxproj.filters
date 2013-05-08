@@ -22,6 +22,12 @@
     <Filter Include="Header Files\mw\signals">
       <UniqueIdentifier>{68898398-3fb5-4176-9160-d96e8b3eca4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\mw\enet">
+      <UniqueIdentifier>{491728f8-5129-44c2-aded-926af990e0db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mw\enet">
+      <UniqueIdentifier>{00e59cac-c2e7-4537-9bc6-f86ade38d4ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -81,6 +87,24 @@
     <ClInclude Include="mw\color.h">
       <Filter>Header Files\mw</Filter>
     </ClInclude>
+    <ClInclude Include="mw\packet.h">
+      <Filter>Header Files\mw</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\enet\server.h">
+      <Filter>Header Files\mw\enet</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\enet\client.h">
+      <Filter>Header Files\mw\enet</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\network.h">
+      <Filter>Header Files\mw</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\localnetwork.h">
+      <Filter>Header Files\mw</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\enet\enetnetwork.h">
+      <Filter>Header Files\mw\enet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -121,6 +145,18 @@
     </ClCompile>
     <ClCompile Include="mw\joystick.cpp">
       <Filter>Source Files\mw</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\enet\server.cpp">
+      <Filter>Source Files\mw\enet</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\enet\client.cpp">
+      <Filter>Source Files\mw\enet</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\localnetwork.cpp">
+      <Filter>Source Files\mw</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\enet\enetnetwork.cpp">
+      <Filter>Source Files\mw\enet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
