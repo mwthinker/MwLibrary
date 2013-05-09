@@ -7,31 +7,32 @@ namespace mw {
 
 	class ServerFilter {
 	public:
-		virtual ~ServerFilter() {
-		}
-
+		// Reprent the type of packet rereceived.
+		// NEW_CONNECTION - A new connection from a client.
+		// PACKET - Data stored in a packet.
+		// DISCONNECTED - A client disconnected.
 		enum Type {NEW_CONNECTION,PACKET,DISCONNECTED};	
 
-		// The server pass all received package (packet) through, sent from client
-		// with id (fromId) to client with id (toId). The type (type) represents what type of package received.
-		// Type equals PACKET is the only type where packet is not empty.
+		// The server passes a received packet (packet) through. It's sent from client
+		// with id (fromId) to client with id (toId). The type (type) represents the type of packet received.
 		// The derived serverFilter class is responsible of returning the packet 
-		// which will be delegated to all clients (and the server) receive buffer.
-		// Return true if packet should be passed through to clients.
+		// which then will be delegated to all clients' (and the server's) receive buffer.
+		// Should return true if the packet should be delegated through to clients else false.
 		virtual bool sendThrough(const Packet& packet, int fromId, int toId, Type type) = 0;
+
+	protected:
+		~ServerFilter() {
+		}
 	};
 
 	// This class works as a multiuser system. Should be used
 	// to control a server/client/local system. Helps to create
 	// one system instead of three. Is supposed to be inherited by
 	// server/client/local classes.
-	// One NetworkConnection will be responsible as server, the rest as clients.
-	// Local connection works as a server but without clients. NetworkConnection
-	// connected to each other will all have a unique id. The server is responsible
-	// to give all client a unique  value.
+	// The server is responsible to give all client a unique  value.
 	class Network {
 	public:
-		enum Status {ACTIVE,DISCONNECTING,NOT_ACTIVE};	
+		enum Status {ACTIVE,DISCONNECTING,NOT_ACTIVE};
 
 		Network() {
 			status_ = NOT_ACTIVE;
@@ -64,8 +65,13 @@ namespace mw {
 		// pushToSendBuffer is passed directly here (without going through internet).
 		virtual int pullFromReceiveBuffer(Packet& packet) = 0;
 
+		// Starts the connection to the server/clients.
 		virtual void start() = 0;
+		
+		// Ends all active connections.
 		virtual void stop() = 0;
+		
+		// Must be called frequently in order for the new packets to be sent and received.
 		virtual void update() = 0;
 
 		virtual std::vector<int> getConnectionIds() const = 0;
@@ -80,7 +86,8 @@ namespace mw {
 		static int getServerId() {
 			return 1;
 		}
-
+		
+		// Returns the current status for the network.
 		Status getStatus() const {
 			return status_;
 		}
@@ -90,14 +97,16 @@ namespace mw {
 		virtual int getNbrOfConnections() const {
 			return 0;
 		}
+
 	protected:
 		void setStatus(Status status) {
 			status_ = status;
 		}
+
 	private:
 		Status status_;	
 	};
 
-} // namesapce mw
+} // Namespace mw.
 
 #endif // MW_NETWORK_H
