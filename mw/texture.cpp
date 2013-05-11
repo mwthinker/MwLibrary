@@ -72,12 +72,12 @@ namespace mw {
 			0xff000000
 #endif
 			);
-		
+
 		loadedToVideoId_ = mw::Window::getVideoId()-1; // loadedToVideoId_ != mw::Window::getVideoId() means that the opengl texture is not loaded yet.
 	}
 
 	bool Texture::saveToFile(std::string filename) const {
-		return SDL_SaveBMP(preLoadSurface_, filename.c_str()) == 0;
+		return false;
 	}
 
 	Texture::~Texture() {

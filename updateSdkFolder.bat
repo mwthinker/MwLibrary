@@ -30,4 +30,4 @@ xcopy %solutionFolderVar%\MwLibrary\Debug\*.pdb %destFolder%\lib-d\
 xcopy %solutionFolderVar%\MwLibrary\Debug\*.idb %destFolder%\lib-d\
 xcopy %solutionFolderVar%\Debug\MwLibrary.lib %destFolder%\lib-d\
 
-"c:\Program Files\7-Zip\7z.exe" a "%destFolder%\mw.7z" "%destFolder%\"
+::"c:\Program Files\7-Zip\7z.exe" a "%destFolder%\mw.7z" "%destFolder%\"
