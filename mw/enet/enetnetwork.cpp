@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdio>
 #include <queue>
+#include <cstring>
 
 namespace mw {
 	namespace enet {
@@ -25,7 +26,7 @@ namespace mw {
 					//return EXIT_FAILURE;
 				}
 			}
-		}	
+		}
 
 		EnetNetwork::~EnetNetwork() {
 			--nbrOfInstances;
@@ -62,7 +63,7 @@ namespace mw {
 
 			InternalPacket& iPacket = receivePackets_.front();
 			data = iPacket.data_;
-			int id = iPacket.fromId_;		
+			int id = iPacket.fromId_;
 
 			receivePackets_.pop();
 			return id;
@@ -79,12 +80,12 @@ namespace mw {
 				data[0] = PACKET;
 				data[1] = id;
 				const std::vector<char>& tmp = dataPacket.getData();
-				memcpy(data+2,&tmp[0],tmp.size());
+				std::memcpy(data+2,&tmp[0],tmp.size());
 			}
 
 			ENetPacket* eNetPacket = 0;
 			if (type == PacketType::RELIABLE) {
-				eNetPacket = enet_packet_create(data,size,ENET_PACKET_FLAG_RELIABLE);			
+				eNetPacket = enet_packet_create(data,size,ENET_PACKET_FLAG_RELIABLE);
 			} else {
 				eNetPacket = enet_packet_create(data,size,ENET_PACKET_FLAG_UNRELIABLE_FRAGMENT);
 			}

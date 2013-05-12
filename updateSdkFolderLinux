@@ -1,0 +1,14 @@
+#!/bin/bash
+
+rm -r ../SDK/MwLibrary
+
+mkdir ../SDK/MwLibrary
+mkdir ../SDK/MwLibrary/mw
+mkdir ../SDK/MwLibrary/mw/enet
+mkdir ../SDK/MwLibrary/mw/signals
+
+cp libMwLibrary.a ../SDK/MwLibrary
+cp mw/*.h ../SDK/MwLibrary/mw
+cp mw/enet/*.h ../SDK/MwLibrary/mw/enet
+cp mw/signals/*.h ../SDK/MwLibrary/mw/signals
+
