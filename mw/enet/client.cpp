@@ -18,7 +18,9 @@ namespace mw {
 			if (peer_ != 0) {
 				enet_peer_reset(peer_);
 			}
-			enet_host_destroy(client_);
+			if (client_ != 0) {
+				enet_host_destroy(client_);
+			}
 		}
 
 		void Client::start() {
@@ -65,12 +67,14 @@ namespace mw {
 				while (getStatus() != NOT_ACTIVE && 
 					(eventStatus = enet_host_service(client_, &eNetEvent, 0)) > 0) {
 						switch(eNetEvent.type) {
-						case ENET_EVENT_TYPE_CONNECT: {
-							printf("(Client) We got a new connection from %x\n",eNetEvent.peer->address.host);
-							peer_ = eNetEvent.peer;
+						case ENET_EVENT_TYPE_CONNECT:
+							{
+								printf("(Client) We got a new connection from %x\n",eNetEvent.peer->address.host);
+								peer_ = eNetEvent.peer;
 
-							break;
-													  } case ENET_EVENT_TYPE_RECEIVE:
+								break;
+							}
+						case ENET_EVENT_TYPE_RECEIVE:
 							if (getStatus() != NOT_ACTIVE) {
 								// Add to receive buffer.
 								InternalPacket iPacket = receive(eNetEvent);
@@ -82,18 +86,19 @@ namespace mw {
 							}
 							enet_packet_destroy(eNetEvent.packet);
 							break;
-													  case ENET_EVENT_TYPE_DISCONNECT:
-														  printf("%s disconnected.\n", (char*)eNetEvent.peer->data);
-														  // Reset client's information
-														  eNetEvent.peer->data = NULL;
-														  enet_host_destroy(client_);
-														  setStatus(NOT_ACTIVE);
-														  id_ = -1; // Is assigned by server.
-														  peer_ = 0;
-														  break;
-													  case ENET_EVENT_TYPE_NONE:
-														  std::cout << "No event\n" << std::endl;
-														  break;
+						case ENET_EVENT_TYPE_DISCONNECT:
+							printf("%s disconnected.\n", (char*)eNetEvent.peer->data);
+							// Reset client's information
+							eNetEvent.peer->data = NULL;
+							enet_host_destroy(client_);
+							client_ = 0;
+							setStatus(NOT_ACTIVE);
+							id_ = -1; // Is assigned by server.
+							peer_ = 0;
+							break;
+						case ENET_EVENT_TYPE_NONE:
+							std::cout << "No event\n" << std::endl;
+							break;
 						}
 				}
 
