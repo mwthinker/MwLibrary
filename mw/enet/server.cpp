@@ -24,8 +24,9 @@ namespace mw {
 			for (auto it = peers_.begin(); it != peers_.end(); ++it) {
 				enet_peer_reset(it->first);
 			}
-			std::cout << "\nDESTROY";
-			enet_host_destroy(server_);
+			if (server_ != 0) {
+				enet_host_destroy(server_);
+			}
 		}
 
 		void Server::start() {
@@ -54,7 +55,7 @@ namespace mw {
 				setStatus(DISCONNECTING);
 				for (auto it = peers_.begin(); it != peers_.end(); ++it) {
 					ENetPeer* peer = it->first;
-					enet_peer_disconnect_later(peer,0);
+					enet_peer_disconnect(peer,0);
 				}
 			}
 		}
@@ -81,11 +82,11 @@ namespace mw {
 									sendConnectInfoToPeers(peers_);
 									Packet iPacket;
 								} else {
-									enet_peer_disconnect_later(eNetEvent.peer,0);
+									enet_peer_disconnect(eNetEvent.peer,0);
 								}
 							} else {
 								// Stops new connections to be made.
-								enet_peer_disconnect_later(eNetEvent.peer,0);
+								enet_peer_disconnect(eNetEvent.peer,0);
 							}
 							break;
 						case ENET_EVENT_TYPE_RECEIVE:
@@ -111,7 +112,6 @@ namespace mw {
 								printf("%s disconnected.\n", (char*)eNetEvent.peer->data);
 								// Reset client's information
 								auto it = peers_.begin();
-								//std::find(peers_.begin(),peers_.end(),eNetEvent.peer);
 								for (; it != peers_.end(); ++it) {
 									if (it->first == eNetEvent.peer) {
 										break;
@@ -137,7 +137,6 @@ namespace mw {
 								// When all peers is disconnected, then clean up.
 								if (getStatus() == DISCONNECTING && peers_.size() == 0) {
 									eNetEvent.peer->data = NULL;
-									enet_host_destroy(server_);
 									setStatus(NOT_ACTIVE);
 								}
 
@@ -145,7 +144,6 @@ namespace mw {
 							}
 							break;
 						case ENET_EVENT_TYPE_NONE:
-							std::cout << "No event\n" << std::endl;
 							break;
 						}
 				}
@@ -186,8 +184,14 @@ namespace mw {
 					sendPackets_.pop();
 				}
 
-				// One could just use enet_host_service() instead.
 				enet_host_flush(server_);
+				
+				// The server is not active? Or the disconnection is finish?
+				if (getStatus() == NOT_ACTIVE || (getStatus() == DISCONNECTING && peers_.size() == 0)) {
+					enet_host_destroy(server_);
+					server_ = 0;
+					setStatus(NOT_ACTIVE);
+				}
 			}
 		}
 

@@ -57,6 +57,9 @@ namespace mw {
 		void Client::stop() {
 			if (getStatus() == ACTIVE) {
 				setStatus(DISCONNECTING);
+				if (peer_ != 0) {
+					enet_peer_disconnect(peer_, 0);
+				}
 			}
 		}
 
@@ -69,11 +72,10 @@ namespace mw {
 						switch(eNetEvent.type) {
 						case ENET_EVENT_TYPE_CONNECT:
 							{
-								printf("(Client) We got a new connection from %x\n",eNetEvent.peer->address.host);
+								printf("(Client) We got a new connection from %x\n", eNetEvent.peer->address.host);
 								peer_ = eNetEvent.peer;
-
-								break;
 							}
+							break;
 						case ENET_EVENT_TYPE_RECEIVE:
 							if (getStatus() != NOT_ACTIVE) {
 								// Add to receive buffer.
@@ -90,14 +92,11 @@ namespace mw {
 							printf("%s disconnected.\n", (char*)eNetEvent.peer->data);
 							// Reset client's information
 							eNetEvent.peer->data = NULL;
-							enet_host_destroy(client_);
-							client_ = 0;
 							setStatus(NOT_ACTIVE);
 							id_ = -1; // Is assigned by server.
 							peer_ = 0;
 							break;
 						case ENET_EVENT_TYPE_NONE:
-							std::cout << "No event\n" << std::endl;
 							break;
 						}
 				}
@@ -119,8 +118,17 @@ namespace mw {
 					sendPackets_.pop();
 				}
 
-				// One could just use enet_host_service() instead.
-				enet_host_flush(client_);
+				// The client is not active? Or disconnecting is finished?
+				if (getStatus() == NOT_ACTIVE || getStatus() == DISCONNECTING) {					
+					if (peer_ != 0) {
+						enet_peer_reset(peer_);
+						peer_ = 0;
+					}
+					enet_host_flush(client_);
+					enet_host_destroy(client_);
+					client_ = 0;
+					setStatus(NOT_ACTIVE);
+				}
 			}
 		}
 
@@ -137,19 +145,23 @@ namespace mw {
 			char type = packet->data[0];
 			char id = packet->data[1];
 			switch (type) {
-			case CONNECT_INFO: {
-				id_ = id;
-				ids_.clear();
-				for (unsigned int i = 2; i < packet->dataLength; ++i) {
-					ids_.push_back(packet->data[i]);
+			case CONNECT_INFO:
+				{
+					id_ = id;
+					ids_.clear();
+					for (unsigned int i = 2; i < packet->dataLength; ++i) {
+						ids_.push_back(packet->data[i]);
+					}
+					break;
 				}
-				break;
-							   } case PACKET: {
-								   ENetPacket* packet = eNetEvent.packet;
-								   //[0]=type,[1]=id,[2...]=data
-								   std::vector<char> tmp(packet->data+2,packet->data+packet->dataLength);
-								   return InternalPacket(Packet(tmp),id,PacketType::RELIABLE); //Doesn't matter wich PacketType!
-							   }}
+			case PACKET:
+				{
+					ENetPacket* packet = eNetEvent.packet;
+					//[0]=type,[1]=id,[2...]=data
+					std::vector<char> tmp(packet->data+2,packet->data+packet->dataLength);
+					return InternalPacket(Packet(tmp),id,PacketType::RELIABLE); //Doesn't matter wich PacketType!
+				}
+			}
 			return InternalPacket(Packet(),0,PacketType::RELIABLE);
 		}
 
