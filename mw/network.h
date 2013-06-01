@@ -7,22 +7,22 @@ namespace mw {
 
 	class ServerFilter {
 	public:
+		virtual ~ServerFilter() {
+		}
+	
 		// Reprent the type of packet rereceived.
 		// NEW_CONNECTION - A new connection from a client.
 		// PACKET - Data stored in a packet.
 		// DISCONNECTED - A client disconnected.
-		enum Type {NEW_CONNECTION,PACKET,DISCONNECTED};	
+		enum Type {NEW_CONNECTION, PACKET, DISCONNECTED};	
 
 		// The server passes a received packet (packet) through. It's sent from client
 		// with id (fromId) to client with id (toId). The type (type) represents the type of packet received.
 		// The derived serverFilter class is responsible of returning the packet 
 		// which then will be delegated to all clients' (and the server's) receive buffer.
 		// Should return true if the packet should be delegated through to clients else false.
+		// A packet sent inside this function will be sent before the passing packet.
 		virtual bool sendThrough(const Packet& packet, int fromId, int toId, Type type) = 0;
-
-	protected:
-		~ServerFilter() {
-		}
 	};
 
 	// This class works as a multiuser system. Should be used
@@ -44,7 +44,7 @@ namespace mw {
 		// Push the data (packet) to be sent to a specific client with id (toId). 
 		// Id equals zero is the same as calling pushToSendBuffer(const Packet&, PacketType).
 		// If id is a real client the data will go through the server before going to the choosen client 
-		// (only if the server let it through to the coosen client).
+		// (only if the server let it through to the choosen client).
 		// The whole buffer will be sent in the next call to update() and in the same 
 		// order as data was added.
 		// Only data pushed after the call to start() will be sent.
@@ -57,7 +57,7 @@ namespace mw {
 		// When the data is sent it will go to the server passing the server filter and if the 
 		// server allowes the data free pass it will end up at all other clients.
 		// Only data pushed after the call to start() will be sent.	
-		virtual void pushToSendBuffer(const Packet& packet, PacketType type = RELIABLE) = 0;
+		virtual void pushToSendBuffer(const Packet& packet, PacketType type) = 0;
 
 		// Receives data from server.
 		// Receives reliable data from all clients and server. 

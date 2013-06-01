@@ -32,7 +32,7 @@ namespace mw {
 		void Server::start() {
 			if (getStatus() == NOT_ACTIVE) {
 				setStatus(ACTIVE);
-				// Remove old package.
+				// Remove old packet.
 				while (!sendPackets_.empty()) {
 					sendPackets_.pop();
 				}

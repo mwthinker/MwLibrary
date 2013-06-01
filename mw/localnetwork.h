@@ -17,7 +17,7 @@ namespace mw {
 		// Override from Network.
 		// Send data to receiveBuffer.
 		// Send data through serverfilter (if there is one).
-		void pushToSendBuffer(const Packet& packet, PacketType type = RELIABLE) override;
+		void pushToSendBuffer(const Packet& packet, PacketType type) override;
 
 		// Override from Network.
 		// Receives data from server.	
