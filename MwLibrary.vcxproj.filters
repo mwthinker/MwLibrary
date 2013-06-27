@@ -13,150 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\mw">
-      <UniqueIdentifier>{b366c5b0-fabd-4dfb-a8ff-b5f8669f490d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\mw">
-      <UniqueIdentifier>{99a079e8-067d-40c5-a2ff-5a5dd6394f17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\mw\signals">
-      <UniqueIdentifier>{68898398-3fb5-4176-9160-d96e8b3eca4e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\mw\enet">
-      <UniqueIdentifier>{491728f8-5129-44c2-aded-926af990e0db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\mw\enet">
-      <UniqueIdentifier>{00e59cac-c2e7-4537-9bc6-f86ade38d4ea}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\initttf.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\mathvector.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\sound.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\soundbuffer.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\sprite.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\text.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\texture.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\window.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\font.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\gamewindow.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\initsdl.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\joystick.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\music.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\quadtree.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\signals\connection.h">
-      <Filter>Header Files\mw\signals</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\signal.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\color.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\packet.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\enet\server.h">
-      <Filter>Header Files\mw\enet</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\enet\client.h">
-      <Filter>Header Files\mw\enet</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\network.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\localnetwork.h">
-      <Filter>Header Files\mw</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\enet\enetnetwork.h">
-      <Filter>Header Files\mw\enet</Filter>
-    </ClInclude>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="mw\font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\gamewindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\initsdl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\initttf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\joystick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mw\sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mw\soundbuffer.cpp">
-      <Filter>Source Files\mw</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mw\sprite.cpp">
-      <Filter>Source Files\mw</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mw\text.cpp">
-      <Filter>Source Files\mw</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mw\texture.cpp">
-      <Filter>Source Files\mw</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mw\window.cpp">
-      <Filter>Source Files\mw</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mw\font.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\gamewindow.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\initsdl.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\initttf.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\mathvector.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\sound.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\joystick.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\enet\server.cpp">
-      <Filter>Source Files\mw\enet</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\enet\client.cpp">
-      <Filter>Source Files\mw\enet</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\localnetwork.cpp">
-      <Filter>Source Files\mw</Filter>
-    </ClCompile>
-    <ClCompile Include="mw\enet\enetnetwork.cpp">
-      <Filter>Source Files\mw\enet</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mw\font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\gamewindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\initsdl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\initttf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\joystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\soundbuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mw\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

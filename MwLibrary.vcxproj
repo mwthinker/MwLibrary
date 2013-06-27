@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3420F1D1-D26E-454A-83B0-BAB769D068ED}</ProjectGuid>
+    <ProjectGuid>{7DFE8511-CB24-4357-AE2E-02DA2EDDD5EA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MwLibrary</RootNamespace>
   </PropertyGroup>
@@ -40,16 +40,17 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>c:\Programmering\SDK\SDL\SDL all\include;C:\Programmering\SDK\enet\include;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\Programmering\SDK\SDL\SDL all\lib;C:\Programmering\SDK\enet\lib\debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>c:\Programmering\SDK\SDL\SDL all\include;C:\Programmering\SDK\enet\include;$(IncludePath)</IncludePath>
-    <LibraryPath>c:\Programmering\SDK\SDL\SDL all\lib;C:\Programmering\SDK\enet\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -63,7 +64,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -78,53 +80,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="mw\color.h" />
-    <ClInclude Include="mw\network.h" />
-    <ClInclude Include="mw\enet\client.h" />
-    <ClInclude Include="mw\enet\enetnetwork.h" />
-    <ClInclude Include="mw\enet\server.h" />
-    <ClInclude Include="mw\font.h" />
-    <ClInclude Include="mw\gamewindow.h" />
-    <ClInclude Include="mw\initsdl.h" />
-    <ClInclude Include="mw\initttf.h" />
-    <ClInclude Include="mw\joystick.h" />
-    <ClInclude Include="mw\localnetwork.h" />
-    <ClInclude Include="mw\mathvector.h" />
-    <ClInclude Include="mw\music.h" />
-    <ClInclude Include="mw\packet.h" />
-    <ClInclude Include="mw\quadtree.h" />
-    <ClInclude Include="mw\signal.h" />
-    <ClInclude Include="mw\signals\connection.h" />
-    <ClInclude Include="mw\sound.h" />
-    <ClInclude Include="mw\soundbuffer.h" />
-    <ClInclude Include="mw\sprite.h" />
-    <ClInclude Include="mw\text.h" />
-    <ClInclude Include="mw\texture.h" />
-    <ClInclude Include="mw\window.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mw\enet\client.cpp" />
-    <ClCompile Include="mw\enet\enetnetwork.cpp" />
-    <ClCompile Include="mw\enet\server.cpp" />
     <ClCompile Include="mw\font.cpp" />
     <ClCompile Include="mw\gamewindow.cpp" />
     <ClCompile Include="mw\initsdl.cpp" />
     <ClCompile Include="mw\initttf.cpp" />
     <ClCompile Include="mw\joystick.cpp" />
-    <ClCompile Include="mw\localnetwork.cpp" />
-    <ClCompile Include="mw\mathvector.cpp" />
     <ClCompile Include="mw\sound.cpp" />
     <ClCompile Include="mw\soundbuffer.cpp" />
     <ClCompile Include="mw\sprite.cpp" />
     <ClCompile Include="mw\text.cpp" />
     <ClCompile Include="mw\texture.cpp" />
     <ClCompile Include="mw\window.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mw\font.h" />
+    <ClInclude Include="mw\gamewindow.h" />
+    <ClInclude Include="mw\initsdl.h" />
+    <ClInclude Include="mw\initttf.h" />
+    <ClInclude Include="mw\joystick.h" />
+    <ClInclude Include="mw\music.h" />
+    <ClInclude Include="mw\sound.h" />
+    <ClInclude Include="mw\soundbuffer.h" />
+    <ClInclude Include="mw\sprite.h" />
+    <ClInclude Include="mw\text.h" />
+    <ClInclude Include="mw\texture.h" />
+    <ClInclude Include="mw\window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
