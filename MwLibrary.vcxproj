@@ -40,12 +40,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SDK\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SDK\SDL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Marcus\Documents\Visual Studio 2012\Projects\SDK\SDL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\SDK\SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\SDK\SDL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
