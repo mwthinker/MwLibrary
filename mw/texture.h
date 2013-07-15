@@ -1,12 +1,12 @@
 #ifndef MW_TEXTURE_H
 #define MW_TEXTURE_H
 
-#include <string>
-
 #include <SDL_opengl.h>
 #include <SDL_image.h>
 
+#include <string>
 #include <memory>
+#include <functional>
 
 namespace mw {
 
@@ -14,17 +14,23 @@ namespace mw {
 	public:
 		// Loads a image from a file. It stores the image in memory and no opengl
 		// code are of use in the constructor (safe to call constructor in other threads).
-		Texture(std::string filename);
+		Texture(std::string filename, std::function<void()> filter = []() {
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		});
 
 		// Loads a image from data.
-		Texture(int width, int height, int pixelSize, void* data);
+		Texture(int width, int height, int pixelSize, void* data, std::function<void()> filter = []() {
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		});
 
 		// Cleens the image from memory and the opengl texture from graphic memory.
 		~Texture();
 
 		// Binds the texture to the target GL_TEXTURE_2D. First call, copies 
 		// the image data to graphic memory.
-		void bind();		
+		void bind();
 
 		// Returns the width of the image in pixels.
 		int getWidth() const;
@@ -32,10 +38,9 @@ namespace mw {
 		// Returns the height of the image in pixels. 
 		int getHeight() const;
 
-		// Not implemented!
-		// Saves the texture as a bmp. Returns true if successful else false.
-		// E.g. filename="image" => creates a bmp image named "image".
-		bool saveToFile(std::string filename) const;
+		// Use with care. Gets a copy of the underlaying surface.
+		SDL_Surface* getSdlSurface() const;
+
 	private:
 		Texture(const Texture&) {
 			// Not to be used. Is not copyable.
@@ -57,9 +62,9 @@ namespace mw {
 		void loadToVideo();
 
 		GLuint texture_;
-
 		SDL_Surface* preLoadSurface_;
 		int loadedToVideoId_;
+		std::function<void()> filter_;
 	};
 
 	typedef std::shared_ptr<Texture> TexturePtr;

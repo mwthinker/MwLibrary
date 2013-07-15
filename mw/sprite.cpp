@@ -11,8 +11,8 @@ namespace mw {
 		drawPixelSize_ = false;
     }
 
-	Sprite::Sprite(std::string image) {
-		texture_ = TexturePtr(new mw::Texture(image));
+	Sprite::Sprite(std::string image, std::function<void()> filter) {
+		texture_ = TexturePtr(new mw::Texture(image, filter));
 		drawPixelSize_ = false;
     }
 

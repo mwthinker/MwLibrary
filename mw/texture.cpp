@@ -10,52 +10,37 @@ namespace mw {
 
 	namespace {
 
-		// Quick utility function for texture creation.
-		int powerOfTwo(int input) {
-			int value = 1;
-
-			while (value < input) {
-				value <<= 1;
-			}
-
-			return value;
-		}
-
 		// Creates and returns a opengl texture from the surface provided.
-		GLuint SdlGlLoadTexture(SDL_Surface* const surface) {
-			GLuint textureId;
-
+		bool SdlGlLoadTexture(SDL_Surface* const surface, GLuint& textureId) {
 			glGenTextures(1, &textureId);
-			glBindTexture(GL_TEXTURE_2D, textureId);
 
-			int mode = GL_RGB;
-			SDL_LockSurface(surface);
-			if (surface->format->BytesPerPixel == 4) {
-				mode = GL_RGBA;
+			if (glGetError() == GL_NO_ERROR) {
+				int mode = GL_RGB;
+				if (surface->format->BytesPerPixel == 4) {
+					mode = GL_RGBA;
+				}
+				
+				glBindTexture(GL_TEXTURE_2D, textureId);
+				glTexImage2D(GL_TEXTURE_2D, 0, mode, surface->w, surface->h, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
+				
+				return true;
 			}
 
-			glTexImage2D(GL_TEXTURE_2D, 0, mode, surface->w, surface->h, 0, mode, GL_UNSIGNED_BYTE, surface->pixels);
-			SDL_UnlockSurface(surface);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			return textureId;
+			return false;
 		}
 	}
 
-	Texture::Texture(std::string filename) : preLoadSurface_(0) {
+	Texture::Texture(std::string filename,  std::function<void()> filter) : preLoadSurface_(0), filter_(filter) {
 		preLoadSurface_ = IMG_Load(filename.c_str());
 		if (preLoadSurface_ == 0) {
 			std::cout << "\nImage " << filename << " failed to load: " << IMG_GetError();			
 		}
 
 		// Is called when the opengl context need to be loaded.
-		// I.e.
 		loadedToVideoId_ = mw::Window::getVideoId()-1; // loadedToVideoId_ != mw::Window::getVideoId() means that the opengl texture is not loaded yet.
 	}
 
-	Texture::Texture(int width, int height, int pixelSize, void* data) {
+	Texture::Texture(int width, int height, int pixelSize, void* data, std::function<void()> filter) : filter_(filter) {
 		preLoadSurface_ = SDL_CreateRGBSurfaceFrom(data,
 			width, height,
 			pixelSize * 8,
@@ -76,8 +61,8 @@ namespace mw {
 		loadedToVideoId_ = mw::Window::getVideoId()-1; // loadedToVideoId_ != mw::Window::getVideoId() means that the opengl texture is not loaded yet.
 	}
 
-	bool Texture::saveToFile(std::string filename) const {
-		return false;
+	SDL_Surface* Texture::getSdlSurface() const {
+		return preLoadSurface_;
 	}
 
 	Texture::~Texture() {
@@ -91,11 +76,18 @@ namespace mw {
 	}
 
 	void Texture::bind() {
-		if (loadedToVideoId_ != mw::Window::getVideoId()) {
+		if (loadedToVideoId_ != mw::Window::getVideoId() && preLoadSurface_ != nullptr) {
 			// Loads to video memory if current texture not valid.
 			loadToVideo();
+			// Texture valid?
+			if (loadedToVideoId_ == mw::Window::getVideoId()) {
+				filter_();
+			}
+		} else {
+			if (loadedToVideoId_ == mw::Window::getVideoId()) {
+				glBindTexture(GL_TEXTURE_2D, texture_);
+			}
 		}
-		glBindTexture(GL_TEXTURE_2D, texture_);        
 	}
 
 	int Texture::getWidth() const {
@@ -115,8 +107,9 @@ namespace mw {
 
 	// Is called when the opengl context need to be loaded.
 	void Texture::loadToVideo() {
-		texture_ = SdlGlLoadTexture(preLoadSurface_);
-		loadedToVideoId_ = mw::Window::getVideoId();
+		if (SdlGlLoadTexture(preLoadSurface_,texture_)) {
+			loadedToVideoId_ = mw::Window::getVideoId();
+		}
 	}
 
 } // Namespace mw.

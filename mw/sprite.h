@@ -4,6 +4,7 @@
 #include "texture.h"
 
 #include <string>
+#include <functional>
 
 namespace mw {
 
@@ -13,7 +14,10 @@ namespace mw {
 		Sprite();
 
 		// Loads the image from file (image).
-		Sprite(std::string image);
+		Sprite(std::string image, std::function<void()> filter = []() {
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		});
 
 		// Creates a sprite from a texture (texture) allready existing.
 		// Safe to use the same texture object in other code.
@@ -38,6 +42,7 @@ namespace mw {
 
 		// Returns if the image is to be drawn in pixel size or not.
 		bool isDrawingPixelSize();
+
 	private:
 		TexturePtr texture_;
 		bool drawPixelSize_;
