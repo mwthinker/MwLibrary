@@ -6,28 +6,21 @@ namespace mw {
 
 	std::map<int,int> SoundBuffer::channelList_;
 
-	SoundBuffer::SoundBuffer(std::string filename) {
+	SoundBuffer::SoundBuffer(std::string filename) : valid_(true) {
 		mixChunk_ = 0;
 		if (nbrOfInstances_ < 1) {
 			int success = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
-			//channelList_[-1] = -2;
 			if (success == -1) {
-				//throw SdlGameException(Mix_GetError());
-				std::cout << "\n" << "Sound failed to initiate!";
-			} else {
-				std::cout << "\n" << "Sound succeeded to initiate!";
+				valid_ = false;
+				error_ = "Sound failed to initiate!";
 			}
 		}
 		++nbrOfInstances_;
-
-		mixChunk_ = Mix_LoadWAV(filename.c_str());
-
-		if (mixChunk_ == 0) {
-			//printf("\nFailed to load, code: %s\n", Mix_GetError());
-			// handle error
-			std::cout << "\n" << filename << " failed to load!";
-		} else {
-			std::cout << "\n" << filename << " Loaded successfully!";
+		if (valid_) {
+			mixChunk_ = Mix_LoadWAV(filename.c_str());
+			if (mixChunk_ == 0) {
+				error_ = filename + " failed to load!";
+			}
 		}
 	}
 
@@ -40,6 +33,14 @@ namespace mw {
 		if (nbrOfInstances_ < 1) {
 			Mix_CloseAudio();
 		}
+	}
+
+	bool SoundBuffer::isValid() const {
+		return valid_;
+	}
+
+	std::string SoundBuffer::getError() const {
+		return error_;
 	}
 
 } // Namespace mw

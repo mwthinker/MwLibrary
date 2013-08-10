@@ -1,5 +1,7 @@
 #include "sound.h"
 
+#include <iostream>
+
 namespace mw {
 
 	int Sound::lastId_ = 0;
@@ -45,7 +47,7 @@ namespace mw {
 					SoundBuffer::channelList_[channel_] = id_;
 				} else {
 					// All channels is being used.
-					std::cout << "\nFailed to play sound, id " << id_ << ",all channels is being used!\n";
+					std::cout << "\nFailed to play sound, id " << id_ << ", all channels is being used!\n";
 					std::cout << Mix_GetError() << std::endl;
 				}
 			} else {

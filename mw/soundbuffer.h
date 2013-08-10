@@ -2,19 +2,32 @@
 #define MW_SOUNDBUFFER_H
 
 #include "initsdl.h"
-#include <SDL_mixer.h>
-#include <iostream>
+
 #include <string>
 #include <map>
 
+#include <SDL_mixer.h>
 #include <memory>
 
 namespace mw {
 
+	class SoundBuffer;
+	typedef std::shared_ptr<SoundBuffer> SoundBufferPtr;
+
 	class SoundBuffer : public InitSdl {
 	public:
+		friend class Sound;
+
 		SoundBuffer(std::string filename);
 		~SoundBuffer();
+
+		// Returns true if everything is correct. Else false.
+		bool isValid() const;
+
+		// Returns error message, i.e. when the isValid function returns false.
+		// If no error string will be empty.
+		std::string getError() const;
+
 	private:
 		SoundBuffer(const SoundBuffer&) {
 			// Not to be used. Is not copyable.
@@ -28,11 +41,11 @@ namespace mw {
 		Mix_Chunk* mixChunk_;
 
 		static int nbrOfInstances_;
-		friend class Sound;
-		static std::map<int,int> channelList_;// <channel, sound id>
-	};
 
-	typedef std::shared_ptr<SoundBuffer> SoundBufferPtr;
+		static std::map<int,int> channelList_;// <channel, sound id>
+		bool valid_;
+		std::string error_;
+	};
 
 } // namespace mw
 
