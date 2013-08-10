@@ -21,9 +21,6 @@
     <ClCompile Include="mw\font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mw\gamewindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mw\initsdl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mw\font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mw\gamewindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mw\initsdl.h">

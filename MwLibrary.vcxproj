@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mw\font.cpp" />
-    <ClCompile Include="mw\gamewindow.cpp" />
     <ClCompile Include="mw\initsdl.cpp" />
     <ClCompile Include="mw\initttf.cpp" />
     <ClCompile Include="mw\joystick.cpp" />
@@ -97,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mw\font.h" />
-    <ClInclude Include="mw\gamewindow.h" />
     <ClInclude Include="mw\initsdl.h" />
     <ClInclude Include="mw\initttf.h" />
     <ClInclude Include="mw\joystick.h" />
