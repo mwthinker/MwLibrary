@@ -25,6 +25,13 @@ namespace mw {
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		});
 
+		// Takes over ownership of surface and is responsable of deallocation.
+		// Not safe to use surface outside this class after calling the constuctor.
+		Texture(SDL_Surface* surface, std::function<void()> filter = []() {
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		});
+
 		// Cleens the image from memory and the opengl texture from graphic memory.
 		~Texture();
 
@@ -50,15 +57,8 @@ namespace mw {
 			// Not to be used. Is not copyable.
 			return *this;
 		}
-		
-		friend class Text;
-		
-		// class Texture takes over ownership of surface and is responsable of deallocation.
-		// Not safe to use surface outside this class after calling the constuctor.
-		Texture(SDL_Surface* surface);
 
-		// Is called when the opengl kontext need to be loaded.
-		// I.e.
+		// Is called when the opengl context need to be loaded.
 		void loadToVideo();
 
 		GLuint texture_;

@@ -98,14 +98,11 @@ namespace mw {
 		return preLoadSurface_->h;
 	}
 
-	// class Texture takes over ownership of surface and is responsable of deallocation.
-	// Not safe to use surface outside this class after calling the constuctor.
-	Texture::Texture(SDL_Surface* surface) : preLoadSurface_(surface) {
+	Texture::Texture(SDL_Surface* surface, std::function<void()> filter) : preLoadSurface_(surface), filter_(filter) {
 		// To tell that a opengl texture should be created.
 		loadedToVideoId_ = mw::Window::getVideoId()-1;
 	}
 
-	// Is called when the opengl context need to be loaded.
 	void Texture::loadToVideo() {
 		if (SdlGlLoadTexture(preLoadSurface_,texture_)) {
 			loadedToVideoId_ = mw::Window::getVideoId();
