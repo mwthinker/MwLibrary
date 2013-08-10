@@ -14,7 +14,20 @@ namespace mw {
 	class SoundBuffer;
 	typedef std::shared_ptr<SoundBuffer> SoundBufferPtr;
 
-	class SoundBuffer : public InitSdl {
+	class InitSoundBuffer {
+	public:
+		InitSoundBuffer();
+
+		InitSoundBuffer(const InitSoundBuffer&);
+		InitSoundBuffer& operator=(const InitSoundBuffer&);	
+	
+	private:
+		~InitSoundBuffer();
+
+		static int nbrOfInstances_;
+	};
+
+	class SoundBuffer : public InitSdl, public InitSoundBuffer {
 	public:
 		friend class Sound;
 
@@ -39,8 +52,6 @@ namespace mw {
 		}
 
 		Mix_Chunk* mixChunk_;
-
-		static int nbrOfInstances_;
 
 		static std::unordered_map<int, int> channelList_;// <channel, sound id>
 		bool valid_;
