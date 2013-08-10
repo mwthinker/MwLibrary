@@ -3,10 +3,10 @@
 
 #include "initsdl.h"
 
-#include <string>
-#include <map>
-
 #include <SDL_mixer.h>
+
+#include <string>
+#include <unordered_map>
 #include <memory>
 
 namespace mw {
@@ -42,7 +42,7 @@ namespace mw {
 
 		static int nbrOfInstances_;
 
-		static std::map<int,int> channelList_;// <channel, sound id>
+		static std::unordered_map<int, int> channelList_;// <channel, sound id>
 		bool valid_;
 		std::string error_;
 	};

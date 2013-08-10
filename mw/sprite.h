@@ -19,7 +19,7 @@ namespace mw {
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		});
 
-		// Creates a sprite from a texture (texture) allready existing.
+		// Creates a sprite from a texture (texture) already existing.
 		// Safe to use the same texture object in other code.
 		Sprite(const TexturePtr& texture);
 

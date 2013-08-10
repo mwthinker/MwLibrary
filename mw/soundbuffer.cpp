@@ -4,7 +4,7 @@ namespace mw {
 
 	int SoundBuffer::nbrOfInstances_ = 0;
 
-	std::map<int,int> SoundBuffer::channelList_;
+	std::unordered_map<int, int> SoundBuffer::channelList_;
 
 	SoundBuffer::SoundBuffer(std::string filename) : valid_(true) {
 		mixChunk_ = 0;
