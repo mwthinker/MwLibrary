@@ -6,9 +6,13 @@ namespace mw {
 	class InitSdl {
 	public:
 		InitSdl();
-		virtual ~InitSdl();
+		
 		InitSdl(const InitSdl&);
 		InitSdl& operator=(const InitSdl&);
+	
+	protected:
+		~InitSdl();
+
 	private:
 		static int nbrOfInstances_;
 	};

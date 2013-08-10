@@ -21,9 +21,10 @@ namespace mw {
 		InitSoundBuffer(const InitSoundBuffer&);
 		InitSoundBuffer& operator=(const InitSoundBuffer&);	
 	
-	private:
+	protected:
 		~InitSoundBuffer();
-
+	
+	private:
 		static int nbrOfInstances_;
 	};
 
