@@ -198,8 +198,8 @@ namespace mw {
 		return SDL_GetTicks();
 	}
 
-	void Window::setQuiting(bool quit) {
-		quit_ = quit;
+	void Window::quit() {
+		quit_ = true;
 	}
 
 	bool Window::isQuiting() const {
@@ -212,7 +212,7 @@ namespace mw {
 	void Window::eventUpdate(const SDL_Event& windowEvent) {
 		switch (windowEvent.type) {
 		case SDL_QUIT:
-			mw::Window::setQuiting(true);
+			mw::Window::quit();
 			break;
 		default:
 			break;

@@ -97,8 +97,8 @@ namespace mw {
 		// The returned value represents the number of milliseconds since SDL library initialization. 
 		Uint32 timeTick();
 
-		// Sets the program to quit by setting quit to true, i.e. the loop in startLoop will be made to stop and startloop will return.	
-		void setQuiting(bool quit);
+		// Sets the program to quit. I.e. the loop in startLoop will be made to stop.
+		void quit();
 
 		// Returns if the program is quiting. Is false by default, until a call to setQuiting(true) is made.
 		bool isQuiting() const;
