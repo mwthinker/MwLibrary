@@ -49,7 +49,8 @@ namespace mw {
 
 		static bool firstTime;
 		static std::vector<JoystickPtr> joysticks;
-	};	
-}
+	};
+
+} // Namespace mw.
 
 #endif // JOYSTICK_H

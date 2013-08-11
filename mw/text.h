@@ -27,6 +27,7 @@ namespace mw {
 		double getHeight() const;
 
 		void draw();
+
 	private:
 		void loadText(std::string str);
 		Sprite sprite_;

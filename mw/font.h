@@ -2,13 +2,17 @@
 #define MW_FONT_H
 
 #include "initttf.h"
+
 #include <SDL_ttf.h>
+
 #include <string>
 #include <iostream>
-
 #include <memory>
 
 namespace mw {
+
+	class Font;
+	typedef std::shared_ptr<Font> FontPtr;
 
 	class Font : public InitTtf {
 	public:
@@ -21,6 +25,7 @@ namespace mw {
 		inline unsigned int getCharacterSize() const {
 			return characterSize_;
 		}
+
 	private:
 		Font(const Font&) {
 			// Not to be used. Is not copyable.
@@ -37,8 +42,6 @@ namespace mw {
 		friend class Text;
 	};
 
-	typedef std::shared_ptr<Font> FontPtr;
-
-} // namespace mw
+} // Namespace mw.
 
 #endif // MW_FONT_H

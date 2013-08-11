@@ -8,9 +8,8 @@ namespace mw {
 		characterSize_ = characterSize;
 		font_ = TTF_OpenFont(filename.c_str(),characterSize);
 
-		if (font_ == 0) { // 0 = null
+		if (font_ == 0) {
 			std::cout << "Error font" << std::endl;
-			//throw 1;
 		}
 	}
 
@@ -20,4 +19,4 @@ namespace mw {
 		}
 	}
 	
-} // namespace mw
+} // namespace mw.

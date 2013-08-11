@@ -17,6 +17,6 @@ namespace mw {
 		static int nbrOfInstances_;
 	};
 
-} // namespace mw
+} // Namespace mw.
 
 #endif // MW_INITSDL_H

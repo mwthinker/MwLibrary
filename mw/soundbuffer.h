@@ -19,7 +19,7 @@ namespace mw {
 		InitSoundBuffer();
 
 		InitSoundBuffer(const InitSoundBuffer&);
-		InitSoundBuffer& operator=(const InitSoundBuffer&);	
+		InitSoundBuffer& operator=(const InitSoundBuffer&);
 	
 	protected:
 		~InitSoundBuffer();
@@ -59,6 +59,6 @@ namespace mw {
 		std::string error_;
 	};
 
-} // namespace mw
+} // Namespace mw.
 
 #endif // MW_SOUNDBUFFER_H
