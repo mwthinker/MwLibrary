@@ -13,25 +13,12 @@ namespace mw {
 
 	class ScreenResolution {
 	public:
-		inline ScreenResolution() {
-			width_ = 0;
-			height_ = 0;
+		inline ScreenResolution() : width_(0), height_(0) {
 		}
 
-		inline ScreenResolution(int width, int height) {
-			width_ = width;
-			height_ = height;
+		inline ScreenResolution(int width, int height) : width_(width), height_(height) {
 		}
 
-		inline int getWidth() const {
-			return width_;
-		}
-
-		inline int getHeight() const {
-			return height_;
-		}
-
-	private:
 		int width_, height_;
 	};
 
@@ -66,9 +53,9 @@ namespace mw {
 		// Gets the current title of the windows.
 		std::string getWindowsTitle() const;
 
-		// Enables/Disable unicode keys to be interpreted from keyboard input. By default is it disabled.
+		// Enables/Disable unicode keys to be interpreted from keyboard input. By default it is disabled.
 		void setUnicodeInputEnable(bool unicode);
-		// Returns, if unicode keys is to be interpreted from keyboard input, is enbled or disabled.
+		// Returns, if unicode keys is to be interpreted from keyboard input, is true enabled or false if disabled.
 		bool isUnicodeInputEnable() const;
 
 		// Returns a vector of all valid fullscreen resolutions.
@@ -100,7 +87,7 @@ namespace mw {
 		// Sets the program to quit. I.e. the loop in startLoop will be made to stop.
 		void quit();
 
-		// Returns if the program is quiting. Is false by default, until a call to setQuiting(true) is made.
+		// Returns if the program is quiting. Is false by default, until a call to quit() is made.
 		bool isQuiting() const;
 	private:
 		// Is called by the loop. The frequency in which this function is called is fixed

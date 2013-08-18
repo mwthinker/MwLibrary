@@ -48,6 +48,10 @@ namespace mw {
 		// Use with care. Gets a copy of the underlaying surface.
 		SDL_Surface* getSdlSurface() const;
 
+		// Returns if the image is loadad correctly. It may however not be loaded
+		// to graphic memory despite the result of this function.
+		bool isValid() const;
+
 	private:
 		Texture(const Texture&) {
 			// Not to be used. Is not copyable.

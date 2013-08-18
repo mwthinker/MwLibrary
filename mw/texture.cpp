@@ -98,6 +98,10 @@ namespace mw {
 		return preLoadSurface_->h;
 	}
 
+	bool Texture::isValid() const {
+		return preLoadSurface_ != nullptr;
+	}
+
 	Texture::Texture(SDL_Surface* surface, std::function<void()> filter) : preLoadSurface_(surface), filter_(filter) {
 		// To tell that a opengl texture should be created.
 		loadedToVideoId_ = mw::Window::getVideoId()-1;

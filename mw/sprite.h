@@ -25,7 +25,7 @@ namespace mw {
 
 		// Sets a texture to the sprite. Safe to use the same 
 		// object texture in other code.
-		void setTexture(TexturePtr& texture);
+		void setTexture(const TexturePtr& texture);
 
 		// Returns the sprites texture. Returns null if the sprite is
 		// empty.

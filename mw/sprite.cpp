@@ -21,7 +21,7 @@ namespace mw {
 		drawPixelSize_ = false;
     }
 
-    void Sprite::setTexture(TexturePtr& texture) {
+    void Sprite::setTexture(const TexturePtr& texture) {
         texture_ = texture;
     }
 
@@ -30,7 +30,7 @@ namespace mw {
     }
 
     void Sprite::draw() {
-        if (texture_ != 0) {
+		if (texture_ != 0 && texture_->isValid()) {
             texture_->bind();
 
             glEnable(GL_BLEND);

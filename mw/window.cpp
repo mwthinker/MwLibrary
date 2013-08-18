@@ -150,9 +150,9 @@ namespace mw {
 		if (fullScreen_ != fullScreen) {
 			if (fullScreen) {
 				videoflags_ = SDL_OPENGL | SDL_FULLSCREEN;
-				width_ = fullScreenResolution_.getWidth();
-				height_ = fullScreenResolution_.getHeight();
-				SDL_Surface* surface = SDL_SetVideoMode(fullScreenResolution_.getWidth(), fullScreenResolution_.getHeight(), 32, videoflags_);
+				width_ = fullScreenResolution_.width_;
+				height_ = fullScreenResolution_.height_;
+				SDL_Surface* surface = SDL_SetVideoMode(width_, height_, 32, videoflags_);
 				if (surface == 0) {
 					// Reset to old the window settings.
 					fullScreen = false;
@@ -167,8 +167,8 @@ namespace mw {
 				} else {
 					videoflags_ = SDL_OPENGL;
 				}
-				width_ = screenResolution_.getWidth();
-				height_ = screenResolution_.getHeight();
+				width_ = screenResolution_.width_;
+				height_ = screenResolution_.height_;
 				SDL_SetVideoMode(width_, height_, 32, videoflags_);
 				++videoId_;
 				fullScreen_ = false;
