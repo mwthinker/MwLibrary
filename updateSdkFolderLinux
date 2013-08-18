@@ -7,3 +7,4 @@ mkdir ../SDK/MwLibrary/mw
 
 cp libMwLibrary.a ../SDK/MwLibrary
 cp mw/*.h ../SDK/MwLibrary/mw
+
