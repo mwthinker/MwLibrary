@@ -88,7 +88,12 @@ namespace mw {
 				SDL_Color color = {255,255,255};
 				SDL_Surface* surface = TTF_RenderText_Blended(font_->font_, str.c_str(), color);
 				// texture_ takes ownership of surface
-				TexturePtr texture = TexturePtr(new Texture(surface));
+				TexturePtr texture = TexturePtr(new Texture(surface,[]() {
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+				}));
 				sprite_.setTexture(texture);
 			}
 		}
