@@ -15,6 +15,7 @@ else (WIN32)
 endif (WIN32)
 # Source files.
 SET(SOURCES
+src/mw/color.h
 src/mw/initsdl.cpp
 src/mw/initsdl.h
 src/mw/initttf.cpp
